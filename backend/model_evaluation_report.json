@@ -1,0 +1,29 @@
+{
+  "dataset": {
+    "total_samples": 1100,
+    "normal_samples": 1000,
+    "anomalous_samples": 100
+  },
+  "metrics": {
+    "precision": 0.9798,
+    "recall": 0.97,
+    "f1_score": 0.9749,
+    "accuracy": 0.9955
+  },
+  "confusion_matrix": {
+    "true_negatives": 998,
+    "false_positives": 2,
+    "false_negatives": 3,
+    "true_positives": 97
+  },
+  "score_statistics": {
+    "normal_mean_score": 0.1143,
+    "anomaly_mean_score": 0.6168
+  },
+  "limitations": [
+    "Unsupervised model relies on contamination assumptions and clean baseline training.",
+    "Synthetic evaluation does not account for factory ambient temperature fluctuations or seasonal drift.",
+    "Requires periodic retraining or online adaptation to avoid false positives during new production cycles.",
+    "Score reflects outlier distance, not calibrated probability of imminent mechanical failure."
+  ]
+}
