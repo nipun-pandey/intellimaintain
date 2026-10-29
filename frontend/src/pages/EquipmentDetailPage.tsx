@@ -75,7 +75,7 @@ export const EquipmentDetailPage: React.FC = () => {
     try {
       const [eq, h, tel, al, maint] = await Promise.all([
         equipmentService.get(equipmentId),
-        api.get<HealthAssessment>(`/api/v1/health/equipment/${equipmentId}`).then((r) => r.data),
+        equipmentService.getHealth(equipmentId),
         telemetryService.getRecent(equipmentId, 40),
         alertService.list({ equipment_id: equipmentId }),
         maintenanceService.list({ equipment_id: equipmentId }),
@@ -95,7 +95,7 @@ export const EquipmentDetailPage: React.FC = () => {
   const loadTelemetryAndHealth = async () => {
     try {
       const [h, tel, al] = await Promise.all([
-        api.get<HealthAssessment>(`/api/v1/health/equipment/${equipmentId}`).then((r) => r.data),
+        equipmentService.getHealth(equipmentId),
         telemetryService.getRecent(equipmentId, 40),
         alertService.list({ equipment_id: equipmentId }),
       ]);

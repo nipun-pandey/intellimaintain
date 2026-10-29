@@ -28,6 +28,23 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       <div className="flex items-center gap-4">
+        {/* Backend Connectivity Mode Pill */}
+        {import.meta.env.VITE_API_URL ? (
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" title={`Connected to ${import.meta.env.VITE_API_URL}`}>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Live API</span>
+          </div>
+        ) : (
+          <Link
+            to="/settings"
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200 transition-colors"
+            title="Running in Standalone Demo Mode. Set VITE_API_URL in Vercel to connect live backend."
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            <span>Demo Mode</span>
+          </Link>
+        )}
+
         {/* Simulator Control Quick-Pill */}
         {simulatorStatus?.is_running ? (
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-200 text-blue-900 text-xs">

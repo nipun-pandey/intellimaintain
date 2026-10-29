@@ -82,20 +82,24 @@ export const SettingsPage: React.FC = () => {
 
           <div className="space-y-2 text-xs font-mono">
             <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-              <span className="text-slate-500">API Gateway:</span>
-              <span className="text-emerald-700 font-bold">FastAPI v0.111.1 (Online)</span>
+              <span className="text-slate-500">Backend Endpoint:</span>
+              <span className="text-blue-700 font-bold truncate max-w-[200px]" title={import.meta.env.VITE_API_URL || 'Client-Side Engine'}>
+                {import.meta.env.VITE_API_URL || 'Standalone Demo Mode'}
+              </span>
             </div>
             <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-              <span className="text-slate-500">Database Engine:</span>
-              <span className="text-slate-800 font-bold">PostgreSQL / SQLite Compatible</span>
+              <span className="text-slate-500">API Gateway Status:</span>
+              <span className={import.meta.env.VITE_API_URL ? 'text-emerald-700 font-bold' : 'text-blue-700 font-bold'}>
+                {import.meta.env.VITE_API_URL ? 'Remote Connected' : 'Local Preview Engine'}
+              </span>
             </div>
             <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-              <span className="text-slate-500">ML Model:</span>
-              <span className="text-purple-700 font-bold">Isolation Forest (100 Trees, Contam=0.08)</span>
+              <span className="text-slate-500">ML Anomaly Model:</span>
+              <span className="text-purple-700 font-bold">Isolation Forest (ISO 10816 calibrated)</span>
             </div>
             <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-              <span className="text-slate-500">Vibration Standard:</span>
-              <span className="text-slate-800 font-bold">ISO 10816 Zone D Limits</span>
+              <span className="text-slate-500">Backend Switch:</span>
+              <span className="text-slate-700 text-[11px]">Set VITE_API_URL in Vercel</span>
             </div>
           </div>
         </div>
